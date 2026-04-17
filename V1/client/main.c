@@ -1,6 +1,5 @@
 #include "client.h"
 #include "epoll.h"
-#include <func.h>
 #include <string.h>
 #include <sys/epoll.h>
 #include <unistd.h>
