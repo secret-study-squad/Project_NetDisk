@@ -132,9 +132,9 @@ int main(int argc, char* argv[]){
                 cmd_gets(client_fd, remote_path, local_path);
             }
             else {
-                // 其他命令（cd, mkdir, remove, rmdir）直接从输入中提取路径
                 get_path(buf, path);
-                if (strstr(path, "..")) {
+                // cd 命令允许包含 ..
+                if (cmd_type != CMD_CD && strstr(path, "..")) {
                     printf("Invalid path (.. not allowed)\n");
                     char empty[256] = {0};
                     send(client_fd, empty, sizeof(empty), MSG_NOSIGNAL);

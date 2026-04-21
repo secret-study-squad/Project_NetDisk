@@ -21,12 +21,18 @@ static void make_local_dirs(const char *path) {
 }
 
 void cmd_cd(int fd){
-    char response[1024] = {0};
-    ssize_t ret = recv(fd, response, sizeof(response), 0);
+    // 修复：4.21_19:22
+    // 第一个 recv 使用 sizeof(response) 但没有 MSG_WAITALL，并且没有正确处理接收到的数据可能包含路径
+    // 服务端先发送 "Directory changed.\n"（19 字节）紧接着发送路径字符串（不带换行）
+    // 这两段数据很可能被客户端一次 recv 全部读入 response 缓冲区
+    char response[20] = {0}; // 正好存放 "Directory changed.\n" + '\0'
+    // 精确读取 19 字节
+    ssize_t ret = recv(fd, response, 19, MSG_WAITALL); // 服务端那边发的是strlen()个字符，所以没有'\0'还需手动添加
     if (ret <= 0) {
         printf("cd: no response\n");
         return;
     }
+    response[19] = '\0';
 
     // 判断是否cd成功
     if (strcmp(response, "Directory changed.\n") == 0) {
@@ -44,12 +50,20 @@ void cmd_cd(int fd){
             /* strncpy(cur_path, new_path, sizeof(cur_path) - 1); */
             cur_path[sizeof(cur_path) - 1] = '\0';
             printf("Directory changed.\n");
-        } else {
+        } 
+        else { // ret <= 0 
             printf("Directory changed but cur_path lost.\n");
         }
     } else {
-        // cd失败
+        // cd失败：先打印已读到的19字节，然后继续读取剩余内容直到换行
+        // 修改
+        // 为了完整显示长度可能超过 19 字节的错误消息，最小影响改动：采用的固定 19 字节成功判断 + 失败时补读剩余行
         printf("%s", response);
+        char c;
+        while (recv(fd, &c, 1, 0) == 1) {
+            putchar(c);
+            if (c == '\n') break;
+        }
     }
 }
 
@@ -130,20 +144,34 @@ void cmd_puts(int fd, const char* local_path) {
     }
     lseek(file_fd, existing_size, SEEK_SET);
 
+    printf("[TEST] uplaod begin.\n");
+
     // 若文件大于100MB，使用 mmap 发送；否则循环发送
     if (total_size > 100 * 1024 * 1024) {
-        void *mapped = mmap(NULL, remaining, PROT_READ, MAP_PRIVATE, file_fd, existing_size);
+        // 获取系统页大小
+        long page_size = sysconf(_SC_PAGESIZE);
+        if (page_size <= 0) page_size = 4096;
+
+        // 将偏移向下对齐到页边界
+        off_t aligned_offset = (existing_size / page_size) * page_size;
+        size_t extra = existing_size - aligned_offset;          // 多映射的前部额外字节
+        size_t map_length = remaining + extra;
+
+        void *mapped = mmap(NULL, map_length, PROT_READ, MAP_PRIVATE, file_fd, aligned_offset);
         if (mapped == MAP_FAILED) {
             perror("puts: mmap");
             close(file_fd);
             return;
         }
-        ssize_t sent = send(fd, mapped, remaining, 0);
+
+        // 发送数据时跳过前面多余的 extra 字节
+        ssize_t sent = send(fd, (char*)mapped + extra, remaining, 0);
         if (sent != remaining) {
             printf("puts: send incomplete\n");
         }
-        munmap(mapped, remaining);
-    } else {
+        munmap(mapped, map_length);
+    } 
+    else { // 小于100MB不用mmap
         char buf[8192];
         long to_send = remaining;
         while (to_send > 0) {

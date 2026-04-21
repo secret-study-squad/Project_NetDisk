@@ -35,7 +35,7 @@ void* thread_func(void* arg){
             if(ret <= 0)
                 break; // 客户端断开
             char path[256] = {0};
-            if(cmd_type != CMD_PWD){
+            if(cmd_type != CMD_PWD && cmd_type != CMD_LS){
                 ret = recv(client_fd, path, sizeof(path), MSG_WAITALL); 
                 if(ret <= 0)
                     break; // 客户端断开

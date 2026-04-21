@@ -305,7 +305,7 @@ void forest_list_dir(int dir_id, const char *user_name, int client_fd){
 
     char query[1024];
     snprintf(query, sizeof(query),
-        "select file_name, file_type from file_forest "
+        "select file_name, file_type, create_time from file_forest "
         "where user_name='%s' AND pdir_id=%d AND alive=1 "
         "ORDER BY file_type ASC, file_name ASC",
         escaped_username, dir_id);
@@ -330,7 +330,7 @@ void forest_list_dir(int dir_id, const char *user_name, int client_fd){
     while ((row = mysql_fetch_row(res))) {
         // 只读字符串常量，得加const修饰    row[0]-file_name    row[1]-file_type
         const char *type_mark = (atoi(row[1]) == FILE_TYPE_DIR) ? "[d]   " : "[f]   ";
-        int len = snprintf(output + offset, sizeof(output) - offset,"%s%s\n", type_mark, row[0]);
+        int len = snprintf(output + offset, sizeof(output) - offset,"%s%s   %s\n", type_mark, row[2], row[0]);
         if (len < 0 || offset + len >= (int)sizeof(output) - 1) // 最多只能size-1个字符，末尾需要'\0' 
             break;
         offset += len;

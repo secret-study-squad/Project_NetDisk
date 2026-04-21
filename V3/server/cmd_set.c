@@ -173,6 +173,8 @@ void cmd_puts(Session* sess, char* path){
         ssize_t r = recv(sess->fd, dest + received, remaining - received, MSG_WAITALL);
         if (r <= 0) break;
         received += r;
+        // 实时更新已接收大小
+        forest_update_file_record(existing_id, existing_size + received, file_hash, 0);
     }
     munmap(mapped, remaining);
     close(fd);
