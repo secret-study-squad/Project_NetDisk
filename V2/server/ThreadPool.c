@@ -62,8 +62,8 @@ void *threadFunc(void *arg) {
             doTask(task);
             //释放
             free(task);
-        }
-        printf("task is NULL\n");
+        }else
+            printf("task is NULL\n");
     }
     pthread_exit(NULL);
 }

@@ -1,0 +1,96 @@
+#include <my_header.h>
+#include "handle_cmd.h"
+
+void handle_user(CmdType cmd, char* username, Session* sess) {
+    char password[256] = {0};
+    ssize_t ret = recv(sess->fd, password, sizeof(password), MSG_WAITALL);
+    if (ret <= 0)
+        return;
+
+    if (cmd == CMD_REGISTER) {
+        // 检查用户名是否已存在
+        UserInfo user;
+        if (user_find_by_name(username, &user)) {
+            char msg[] = "Username already exists.\n";
+            send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+            return;
+        }
+        // 生成盐
+        char salt[33];
+        generate_salt(salt, 32);
+        // 计算哈希
+        char hash[65];
+        compute_password_hash(password, salt, hash);
+
+        // 插入数据库
+        if (user_insert(username, salt, hash)) {
+            // 注册时给用户创建一条根目录文件
+            int ret = forest_insert_root_dir(username);
+            if (ret == 0) {
+                // 若创建根目录失败，可考虑回滚用户表（此处简化）
+                char msg[] = "Register failed: cannot create root dir.\n";
+                send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+                return;
+            }
+            
+            strcpy(sess->user_name, username);
+            sess->cur_dir_id = forest_get_root_dir_id(username);
+            sess->logged_in = 1;
+
+            char msg[] = "Register success.\n";
+            send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+            log_operation("User %s registered", username);
+            return;
+        } else {
+            char msg[] = "Register failed.\n";
+            send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+            return;
+        }
+    } 
+    else if (cmd == CMD_LOGIN) {
+        UserInfo user; // 查用户表并拿取用户信息
+        if (!user_find_by_name(username, &user)) {
+            char msg[] = "Username not found.\n";
+            send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+            return;
+        }
+        char hash[65];
+        compute_password_hash(password, user.salt, hash);
+        if (strcmp(hash, user.passwd_hash) == 0) { // 校验密码是否正确
+            sess->logged_in = 1;
+            strcpy(sess->user_name, username);
+
+            // 登录成功，获取用户根目录 ID 作为当前目录
+            int root_id = forest_get_root_dir_id(username);
+            if (root_id == 0) {
+                // 理论上注册时已创建根目录，若不存在则视为错误
+                char msg[] = "Login error: root directory missing.\n";
+                send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+                sess->logged_in = 0;
+                return;
+            }
+            sess->cur_dir_id = root_id;
+
+            char msg[] = "Login success.\n";
+            send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+            log_operation("User %s logged in", username);
+        } else {
+            char msg[] = "Incorrect password.\n";
+            send(sess->fd, msg, strlen(msg), MSG_NOSIGNAL);
+        }
+    }
+}
+
+void handle_file_cmd(CmdType cmd, char *path, Session *sess) {
+    switch (cmd) {
+        case CMD_CD:      cmd_cd(sess, path);     break;
+        case CMD_LS:      cmd_ls(sess, path);     break;
+        case CMD_PUTS:    cmd_puts(sess, path);   break;
+        case CMD_GETS:    cmd_gets(sess, path);   break;
+        case CMD_REMOVE:  cmd_remove(sess, path); break;
+        case CMD_PWD:     cmd_pwd(sess);    break;
+        case CMD_MKDIR:   cmd_mkdir(sess, path);  break;
+        case CMD_RMDIR:   cmd_rmdir(sess, path);  break;
+        default:                                break;
+    }
+}
