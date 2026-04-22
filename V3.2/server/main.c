@@ -1,7 +1,9 @@
 #include <my_header.h>
 #include "head.h"
+#include "Configuration.h"
 
 int pipe_fd[2];
+Configuration conf;
 
 void func(int num){
     // 信号触发
@@ -12,7 +14,12 @@ void func(int num){
 
 int main(int argc, char* argv[]){                                  
     // 初始化数据库
-    if (!sql_init("localhost", "root", "123456", "NetDisk")) {
+    Configuration_init(&conf);
+    Configuration_load(&conf, argv[1]);
+    if (!sql_init(Configuration_get(&conf, "host"), 
+                  Configuration_get(&conf, "mysql_user"),
+                  Configuration_get(&conf, "mysql_password"),
+                  Configuration_get(&conf, "database"))) {
         fprintf(stderr, "Database init failed\n");
         exit(1);
     }
@@ -36,7 +43,7 @@ int main(int argc, char* argv[]){
     init_thread_pool(&pool, 4);
 
     int server_fd = 0;
-    init_socket("192.168.85.128", "12345", &server_fd);
+    init_socket(Configuration_get(&conf, "ip"), Configuration_get(&conf, "port"), &server_fd);
 
     int epoll_fd = epoll_create(1);
     ERROR_CHECK(epoll_fd, -1, "epoll_create");

@@ -1,6 +1,5 @@
 #ifndef LOG_H
 #define LOG_H
-
 // 日志类型枚举
 typedef enum {
     LOG_CONNECT,    // 连接日志

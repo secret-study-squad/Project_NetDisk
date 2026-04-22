@@ -1,19 +1,23 @@
 #include <my_header.h>
 #include "separate_cmd_path.h"
 #include "cmd_set.h"
+#include "Configuration.h"
 #include "hash.h"
 
+Configuration conf;
 char cur_path[1024] = "/"; // 当前工作目录，默认为"/"
 
 int main(int argc, char* argv[]){                                  
+    Configuration_init(&conf);
+    Configuration_load(&conf, argv[1]);
     int client_fd = socket(AF_INET, SOCK_STREAM, 0);
     ERROR_CHECK(client_fd, -1, "socket");
 
     struct sockaddr_in server_addr;
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.s_addr = inet_addr("192.168.85.128");
-    server_addr.sin_port = htons(atoi("12345"));
+    server_addr.sin_addr.s_addr = inet_addr(Configuration_get(&conf, "ip"));
+    server_addr.sin_port = htons(atoi(Configuration_get(&conf, "port")));
 
     int ret_connect = connect(client_fd, (struct sockaddr*)&server_addr, sizeof(server_addr));
     ERROR_CHECK(ret_connect, -1, "connect");
