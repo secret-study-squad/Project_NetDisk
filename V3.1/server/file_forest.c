@@ -305,7 +305,7 @@ void forest_list_dir(int dir_id, const char *user_name, int client_fd){
 
     char query[1024];
     snprintf(query, sizeof(query),
-        "select file_name, file_type from file_forest "
+        "select file_name, file_type, create_time from file_forest "
         "where user_name='%s' AND pdir_id=%d AND alive=1 "
         "ORDER BY file_type ASC, file_name ASC",
         escaped_username, dir_id);
@@ -330,7 +330,7 @@ void forest_list_dir(int dir_id, const char *user_name, int client_fd){
     while ((row = mysql_fetch_row(res))) {
         // 只读字符串常量，得加const修饰    row[0]-file_name    row[1]-file_type
         const char *type_mark = (atoi(row[1]) == FILE_TYPE_DIR) ? "[d]   " : "[f]   ";
-        int len = snprintf(output + offset, sizeof(output) - offset,"%s%s\n", type_mark, row[0]);
+        int len = snprintf(output + offset, sizeof(output) - offset,"%s%s   %s\n", type_mark, row[2], row[0]);
         if (len < 0 || offset + len >= (int)sizeof(output) - 1) // 最多只能size-1个字符，末尾需要'\0' 
             break;
         offset += len;
@@ -423,36 +423,121 @@ bool forest_remove_dir_recursive(int dir_id, const char *dir_path) {
 }
 // ------------------------------↑remove↑------------------------------
 
-// ------------------------------↓puts&gets↓------------------------------
+// ------------------------------ puts/gets -----------------------------
 
-// 获取文件记录详细信息
-bool forest_get_file_info(int id, int *file_type, long *file_size, 
-                          char *file_hash, size_t hash_size, int *is_complete) {
+// 根据用户和路径查找普通文件记录（alive=1）
+int forest_find_file_by_path(const char *user_name, const char *path) {
+    MYSQL *conn = sql_get_conn();
+    if (!conn) return 0;
+
+    char escaped_user[256], escaped_path[1024];
+    mysql_real_escape_string(conn, escaped_user, user_name, strlen(user_name));
+    mysql_real_escape_string(conn, escaped_path, path, strlen(path));
+
+    char query[2048];
+    snprintf(query, sizeof(query),
+        "SELECT id FROM file_forest WHERE user_name='%s' AND path='%s' "
+        "AND file_type=%d AND alive=1",
+        escaped_user, escaped_path, FILE_TYPE_REG);
+
+    if (mysql_query(conn, query)) return 0;
+    MYSQL_RES *res = mysql_store_result(conn);
+    if (!res) return 0;
+    MYSQL_ROW row = mysql_fetch_row(res);
+    int id = 0;
+    if (row) id = atoi(row[0]);
+    mysql_free_result(res);
+    return id;
+}
+
+// 解析路径为父目录ID和纯文件名
+int forest_resolve_file_parent(const char *user_name, int cur_dir_id,
+                               char *path, char *filename_buf, size_t buf_size) {
+    if (!path || !filename_buf) return 0;
+
+    char tmp[1024];
+    strncpy(tmp, path, sizeof(tmp) - 1);
+    tmp[sizeof(tmp) - 1] = '\0';
+
+    // 查找最后一个 '/'
+    char *last_slash = strrchr(tmp, '/');
+    int parent_id = 0;
+    char *fname = NULL;
+
+    if (last_slash == NULL) {
+        // 纯文件名，父目录为当前工作目录
+        fname = tmp;
+        parent_id = cur_dir_id;
+    } else {
+        *last_slash = '\0';
+        char *parent_path = tmp;
+        fname = last_slash + 1;
+
+        if (parent_path[0] == '\0') {
+            // 路径为 "/file.txt" 形式
+            parent_id = forest_get_root_dir_id(user_name);
+        } else {
+            // 解析父目录路径
+            parent_id = forest_get_id_by_path(user_name, parent_path);
+        }
+    }
+
+    if (parent_id == 0 || fname == NULL || fname[0] == '\0')
+        return 0;
+
+    strncpy(filename_buf, fname, buf_size - 1);
+    filename_buf[buf_size - 1] = '\0';
+    return parent_id;
+}
+
+// 获取文件记录的 file_size
+long forest_get_file_size(int file_id) {
+    MYSQL *conn = sql_get_conn();
+    if (!conn) return -1;
+
+    char query[512];
+    snprintf(query, sizeof(query),
+        "SELECT file_size FROM file_forest WHERE id=%d AND alive=1", file_id);
+
+    if (mysql_query(conn, query)) return -1;
+    MYSQL_RES *res = mysql_store_result(conn);
+    if (!res) return -1;
+    MYSQL_ROW row = mysql_fetch_row(res);
+    long size = -1;
+    if (row) size = atol(row[0]);
+    mysql_free_result(res);
+    return size;
+}
+
+// 更新文件记录的上传进度
+bool forest_update_file_progress(int file_id, long new_size, int is_complete) {
     MYSQL *conn = sql_get_conn();
     if (!conn) return false;
 
     char query[512];
     snprintf(query, sizeof(query),
-        "SELECT file_type, file_size, file_hash, is_complete FROM file_forest WHERE id=%d AND alive=1", id);
+        "UPDATE file_forest SET file_size=%ld, is_complete=%d WHERE id=%d",
+        new_size, is_complete, file_id);
 
     if (mysql_query(conn, query)) return false;
-    MYSQL_RES *res = mysql_store_result(conn);
-    if (!res) return false;
-    MYSQL_ROW row = mysql_fetch_row(res);
-    if (!row) {
-        mysql_free_result(res);
-        return false;
-    }
+    return mysql_affected_rows(conn) > 0;
+}
 
-    if (file_type) *file_type = atoi(row[0]);
-    if (file_size) *file_size = atol(row[1]);
-    if (file_hash && row[2]) {
-        strncpy(file_hash, row[2], hash_size - 1);
-        file_hash[hash_size - 1] = '\0';
-    }
-    if (is_complete) *is_complete = atoi(row[3]);
-    mysql_free_result(res);
-    return true;
+// 根据哈希值获取实体文件路径
+void get_entity_path_by_hash(const char *file_hash, char *path_buf, size_t buf_size) {
+    snprintf(path_buf, buf_size, "./files/%s", file_hash);
+}
+
+// 获取上传临时文件路径（使用 file_id 保证唯一）
+void get_temp_upload_path(int file_id, const char *file_hash, char *path_buf, size_t buf_size) {
+    snprintf(path_buf, buf_size, "./files/tmp_%d_%s", file_id, file_hash);
+}
+
+// 删除实体文件（若存在）
+void remove_entity_file(const char *file_hash) {
+    char path[1088];
+    get_entity_path_by_hash(file_hash, path, sizeof(path));
+    unlink(path); // 忽略返回值
 }
 
 // 创建普通文件记录
@@ -514,63 +599,3 @@ int forest_create_file_record(const char *user_name, const char *path,
     }
     return (int)mysql_insert_id(conn);
 }
-
-// 更新文件记录
-bool forest_update_file_record(int id, long file_size, const char *file_hash, int is_complete) {
-    MYSQL *conn = sql_get_conn();
-    if (!conn) return false;
-
-    char escaped_hash[130];
-    if (file_hash) {
-        mysql_real_escape_string(conn, escaped_hash, file_hash, strlen(file_hash));
-    } else {
-        escaped_hash[0] = '\0';
-    }
-
-    char query[1024];
-    snprintf(query, sizeof(query),
-        "UPDATE file_forest SET file_size=%ld, file_hash='%s', is_complete=%d WHERE id=%d",
-        file_size, escaped_hash, is_complete, id);
-
-    if (mysql_query(conn, query)) return false;
-    return mysql_affected_rows(conn) > 0;
-}
-
-// 软删除文件记录
-bool forest_delete_file_record(int id) {
-    MYSQL *conn = sql_get_conn();
-    if (!conn) return false;
-    char query[256];
-    snprintf(query, sizeof(query), "UPDATE file_forest SET alive=0 WHERE id=%d", id);
-    if (mysql_query(conn, query)) return false;
-    return mysql_affected_rows(conn) > 0;
-}
-
-// 根据路径查找ID
-int forest_find_by_path(const char *user_name, const char *path, int *file_type) {
-    MYSQL *conn = sql_get_conn();
-    if (!conn) return 0;
-
-    char escaped_user[256], escaped_path[1024];
-    mysql_real_escape_string(conn, escaped_user, user_name, strlen(user_name));
-    mysql_real_escape_string(conn, escaped_path, path, strlen(path));
-
-    char query[2048];
-    snprintf(query, sizeof(query),
-        "SELECT id, file_type FROM file_forest WHERE user_name='%s' AND path='%s' AND alive=1",
-        escaped_user, escaped_path);
-
-    if (mysql_query(conn, query)) return 0;
-    MYSQL_RES *res = mysql_store_result(conn);
-    if (!res) return 0;
-    MYSQL_ROW row = mysql_fetch_row(res);
-    int id = 0;
-    if (row) {
-        id = atoi(row[0]);
-        if (file_type) *file_type = atoi(row[1]);
-    }
-    mysql_free_result(res);
-    return id;
-}
-
-// ------------------------------↑puts&gets↑------------------------------

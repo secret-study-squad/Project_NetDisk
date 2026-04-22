@@ -24,7 +24,11 @@ void* thread_func(void* arg){
         session.fd = client_fd;
         session.logged_in = 0;
         memset(session.user_name, 0, sizeof(session.user_name));
-        session.cur_dir_id = 0; // 未登录时当前工作目录为空，登录成功时默认为/
+        session.cur_dir_id = 0;  // 未登录时当前工作目录为空，登录成功时默认为/
+        session.upload_file_id = 0;
+        session.upload_received = 0;
+        session.upload_last_sync = 0;
+        memset(session.upload_hash, 0, sizeof(session.upload_hash));
 
         // -----------------------------------
         // 循环处理客户的多个命令
@@ -35,7 +39,7 @@ void* thread_func(void* arg){
             if(ret <= 0)
                 break; // 客户端断开
             char path[256] = {0};
-            if(cmd_type != CMD_PWD){
+            if(cmd_type != CMD_PWD && cmd_type != CMD_LS){
                 ret = recv(client_fd, path, sizeof(path), MSG_WAITALL); 
                 if(ret <= 0)
                     break; // 客户端断开
@@ -49,6 +53,11 @@ void* thread_func(void* arg){
                 handle_file_cmd(cmd_type, path, &session);
             }
         } // while(1)
+        
+        // 客户端关闭连接前，再尝试更新一次文件记录的上传进度
+        if (session.upload_file_id != 0) { 
+            forest_update_file_progress(session.upload_file_id, session.upload_received, 0);
+        }
         close(session.fd);
         log_operation("User %s disconnected", session.user_name[0] ? session.user_name : "unknown");
         // -----------------------------------

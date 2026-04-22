@@ -17,6 +17,8 @@ int main(int argc, char* argv[]){
         exit(1);
     }
 
+    mkdir("./files", 0755); // 创建服务端本地存储文件的目录
+
     pipe(pipe_fd);
 
     if(fork() != 0){ // 父进程
