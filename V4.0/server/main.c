@@ -1,8 +1,8 @@
 #include <my_header.h>
 #include "head.h"
-#include "Configuration.h"
 
 int pipe_fd[2];
+TimeWheel *g_tw = NULL;
 Configuration conf;
 
 void func(int num){
@@ -14,9 +14,10 @@ void func(int num){
 
 int main(int argc, char* argv[]){                                  
     // 初始化数据库
+    // 初始化数据库
     Configuration_init(&conf);
-    Configuration_load(&conf, "../");
-    if (!sql_init(Configuration_get(&conf, "host"), 
+    Configuration_load(&conf, "../.env");
+    if (!sql_init(Configuration_get(&conf, "host"),
                   Configuration_get(&conf, "mysql_user"),
                   Configuration_get(&conf, "mysql_password"),
                   Configuration_get(&conf, "database"))) {
@@ -42,6 +43,13 @@ int main(int argc, char* argv[]){
     thread_pool_t pool;
     init_thread_pool(&pool, 4);
 
+    // create time wheel: 31 slots, 1s interval (approx 30s timeout)
+    g_tw = time_wheel_create(31, 1);
+    if (!g_tw) {
+        fprintf(stderr, "TimeWheel init failed\n");
+        exit(1);
+    }
+
     int server_fd = 0;
     init_socket(Configuration_get(&conf, "ip"), Configuration_get(&conf, "port"), &server_fd);
 
@@ -52,9 +60,14 @@ int main(int argc, char* argv[]){
 
     while(1){
         struct epoll_event events[10];
-        int ready_count = epoll_wait(epoll_fd, events, 10, -1);
+        int ready_count = epoll_wait(epoll_fd, events, 10, 1000);
+        time_t now = time(NULL);
+        int closed = time_wheel_tick(g_tw, now);
+        if (closed > 0) {
+            printf("Closed %d timeout connections\n", closed);
+        }
         ERROR_CHECK(ready_count, -1, "epoll_wait");
-        printf("ready count = %d\n", ready_count);
+        /* printf("ready count = %d\n", ready_count); */
 
         for(int idx = 0; idx < ready_count; idx++){
             int fd = events[idx].data.fd;
@@ -72,6 +85,10 @@ int main(int argc, char* argv[]){
 
                 for(int idx = 0; idx < pool.thread_num; idx++)
                     pthread_join(pool.thread_id_arr[idx], NULL); // 等待子线程结束
+                if (g_tw) {
+                    time_wheel_destroy(g_tw);
+                    g_tw = NULL;
+                }
                 sql_close();
                 pthread_exit((void*)NULL); // 主线程主动退出
             }else if(fd == server_fd){
@@ -79,6 +96,9 @@ int main(int argc, char* argv[]){
                 ERROR_CHECK(client_fd, -1, "accept");
 
                 log_connect(client_fd);   // 记录连接
+
+                // add to time wheel to track idle timeout
+                if (g_tw) time_wheel_add(g_tw, client_fd);
 
                 pthread_mutex_lock(&pool.mutex);
 
