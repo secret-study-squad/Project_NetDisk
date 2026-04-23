@@ -65,6 +65,75 @@ net_disk/src/
   - libssl-dev (OpenSSL)
   - libpthread
 
+### 自定义头文件 (my_header.h)
+
+项目使用统一的自定义头文件 `/usr/include/my_header.h`，包含所有常用的系统头文件和工具宏：
+
+```c
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <dirent.h>
+#include <time.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <grp.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <sys/select.h>
+#include <sys/time.h>
+#include <sys/wait.h>
+#include <signal.h>
+#include <pthread.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <sys/epoll.h>
+#include <sys/sendfile.h>
+#include <mysql/mysql.h>
+#include <error.h>
+#include <errno.h>
+
+// 检查命令行参数数量是否符合预期
+#define ARGS_CHECK(argc, expected) \
+    do { \
+        if ((argc) != (expected)) { \
+            fprintf(stderr, "args num error!\n"); \
+            exit(1); \
+        } \
+    } while (0)
+
+// 检查返回值是否是错误标记,若是则打印msg和错误信息
+#define ERROR_CHECK(ret, error_flag, msg) \
+    do { \
+        if ((ret) == (error_flag)) { \
+            perror(msg); \
+            exit(1); \
+        } \
+    } while (0)
+
+// 线程错误检查
+#define THREAD_ERROR_CHECK(ret, msg) \
+    do { \
+        if ((ret) != 0) { \
+            fprintf(stderr, "%s:%s\n", msg, strerror(ret)); \
+        } \
+    } while (0)
+
+#endif
+```
+
+**使用说明**:
+- 所有源文件通过 `#include <my_header.h>` 引入常用头文件
+- 提供三个实用宏：`ARGS_CHECK`、`ERROR_CHECK`、`THREAD_ERROR_CHECK`
+- 简化代码编写，避免重复包含系统头文件
+
 ## 安装步骤
 
 ### 1. 安装依赖
@@ -615,7 +684,7 @@ sudo apt-get install libssl-dev
 
 ## 许可证
 
-本项目仅供王道的同学们学习交流使用。
+本项目仅供同学们学习交流使用。
 
 ## 版本历史
 
@@ -636,14 +705,14 @@ sudo apt-get install libssl-dev
 - ✅ 实现长短命令分离架构（双端口）
 - ✅ 支持文件秒传和断点续传
 
-### v4.0 (2026-04-21)
+### v3.0 (2026-04-21)
 - ✅ 初始版本发布
 - ✅ 基础文件上传下载功能
 - ✅ MySQL数据库集成
 
 ## 作者
 
-NetDisk Team
+ONLY MAKE BUG Team
 
 ---
 
