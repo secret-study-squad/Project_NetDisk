@@ -1,4 +1,0 @@
-ip = 192.168.85.128
-port = 1234
-LogFile = CloudDisk.log
-Log = TRACE

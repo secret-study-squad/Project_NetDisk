@@ -1,0 +1,596 @@
+[2026-04-22 22:41:01] [INFO] === NetDisk Server Starting ===
+[2026-04-22 22:41:01] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 22:41:01] [INFO] Server listening on 192.168.160.128:12345
+[2026-04-22 22:41:01] [INFO] Server started successfully
+[2026-04-22 22:41:01] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 22:41:04] [INFO] Received signal: 15
+[2026-04-22 22:41:04] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 22:41:04] [INFO] === Shutting down server ===
+[2026-04-22 22:41:04] [INFO] Stopping accepting new connections...
+[2026-04-22 22:41:04] [INFO] Waiting for worker threads to finish...
+[2026-04-22 22:41:04] [INFO] Destroying thread pool...
+[2026-04-22 22:41:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:41:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:41:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:41:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:41:04] [DEBUG] Thread 0 joined
+[2026-04-22 22:41:04] [DEBUG] Thread 1 joined
+[2026-04-22 22:41:04] [DEBUG] Thread 2 joined
+[2026-04-22 22:41:04] [DEBUG] Thread 3 joined
+[2026-04-22 22:41:04] [INFO] All worker threads stopped
+[2026-04-22 22:41:04] [INFO] Thread pool destroyed
+[2026-04-22 22:41:04] [INFO] Closing database connection...
+[2026-04-22 22:41:04] [INFO] MySQL connection closed
+[2026-04-22 22:41:18] [INFO] === NetDisk Server Starting ===
+[2026-04-22 22:41:18] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 22:41:18] [INFO] Server listening on 192.168.160.128:12345
+[2026-04-22 22:41:18] [INFO] Server started successfully
+[2026-04-22 22:41:18] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 22:42:10] [INFO] Received signal: 15
+[2026-04-22 22:42:10] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 22:42:10] [INFO] === Shutting down server ===
+[2026-04-22 22:42:10] [INFO] Stopping accepting new connections...
+[2026-04-22 22:42:10] [INFO] Waiting for worker threads to finish...
+[2026-04-22 22:42:10] [INFO] Destroying thread pool...
+[2026-04-22 22:42:10] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:42:10] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:42:10] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:42:10] [DEBUG] Thread 0 joined
+[2026-04-22 22:42:10] [DEBUG] Thread 1 joined
+[2026-04-22 22:42:10] [DEBUG] Thread 2 joined
+[2026-04-22 22:42:10] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:42:10] [DEBUG] Thread 3 joined
+[2026-04-22 22:42:10] [INFO] All worker threads stopped
+[2026-04-22 22:42:10] [INFO] Thread pool destroyed
+[2026-04-22 22:42:10] [INFO] Closing database connection...
+[2026-04-22 22:42:10] [INFO] MySQL connection closed
+[2026-04-22 22:46:10] [INFO] === NetDisk Server Starting ===
+[2026-04-22 22:46:10] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 22:46:10] [INFO] Server listening on 192.168.160.128:12345
+[2026-04-22 22:46:10] [INFO] Server started successfully
+[2026-04-22 22:46:10] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 22:46:47] [INFO] Received signal: 15
+[2026-04-22 22:46:47] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 22:46:47] [INFO] === Shutting down server ===
+[2026-04-22 22:46:47] [INFO] Stopping accepting new connections...
+[2026-04-22 22:46:47] [INFO] Waiting for worker threads to finish...
+[2026-04-22 22:46:47] [INFO] Destroying thread pool...
+[2026-04-22 22:46:47] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:46:47] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:46:47] [DEBUG] Thread 0 joined
+[2026-04-22 22:46:47] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:46:47] [DEBUG] Thread 1 joined
+[2026-04-22 22:46:47] [DEBUG] Thread 2 joined
+[2026-04-22 22:46:47] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 22:46:47] [DEBUG] Thread 3 joined
+[2026-04-22 22:46:47] [INFO] All worker threads stopped
+[2026-04-22 22:46:47] [INFO] Thread pool destroyed
+[2026-04-22 22:46:47] [INFO] Closing database connection...
+[2026-04-22 22:46:47] [INFO] MySQL connection closed
+[2026-04-22 22:49:19] [INFO] === NetDisk Server Starting ===
+[2026-04-22 22:49:19] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 22:49:19] [INFO] Server listening on 192.168.160.128:12345
+[2026-04-22 22:49:19] [INFO] Server started successfully
+[2026-04-22 22:49:19] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 22:53:23] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 22:53:23] [INFO] Accepted connection from 192.168.160.128:34346
+[2026-04-22 22:53:23] [INFO] New connection accepted, fd=9
+[2026-04-22 22:53:34] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 22:53:34] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:06:03] [INFO] File received and hashed: ./files/temp_muTOIp, hash=3c07ed0aacf96874f4331e9a4795d9cd65db16a4c2102157c67ea354757a99e1
+[2026-04-22 23:06:03] [INFO] File added: /glh_1/glh_2/bible.txt
+[2026-04-22 23:06:03] [INFO] File uploaded: /glh_1/glh_2/bible.txt
+[2026-04-22 23:06:17] [INFO] File sent successfully: ./files/3c07ed0aacf96874f4331e9a4795d9cd65db16a4c2102157c67ea354757a99e1, size=70
+[2026-04-22 23:06:17] [INFO] Connection closed, fd=9
+[2026-04-22 23:10:09] [INFO] Received signal: 2
+[2026-04-22 23:10:09] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 23:10:09] [INFO] === Shutting down server ===
+[2026-04-22 23:10:09] [INFO] Stopping accepting new connections...
+[2026-04-22 23:10:09] [INFO] Waiting for worker threads to finish...
+[2026-04-22 23:10:09] [INFO] Destroying thread pool...
+[2026-04-22 23:10:09] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:10:09] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:10:09] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:10:09] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:10:09] [DEBUG] Thread 0 joined
+[2026-04-22 23:10:09] [DEBUG] Thread 1 joined
+[2026-04-22 23:10:09] [DEBUG] Thread 2 joined
+[2026-04-22 23:10:09] [DEBUG] Thread 3 joined
+[2026-04-22 23:10:09] [INFO] All worker threads stopped
+[2026-04-22 23:10:09] [INFO] Thread pool destroyed
+[2026-04-22 23:10:09] [INFO] Closing database connection...
+[2026-04-22 23:10:09] [INFO] MySQL connection closed
+[2026-04-22 23:11:23] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:11:23] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:11:23] [INFO] Server listening on 192.168.160.128:12345
+[2026-04-22 23:11:23] [INFO] Server started successfully
+[2026-04-22 23:11:23] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 23:11:31] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:11:31] [INFO] Accepted connection from 192.168.160.128:46916
+[2026-04-22 23:11:31] [INFO] New connection accepted, fd=9
+[2026-04-22 23:11:37] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 23:11:37] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:11:59] [INFO] File sent successfully: ./files/3c07ed0aacf96874f4331e9a4795d9cd65db16a4c2102157c67ea354757a99e1, size=70
+[2026-04-22 23:11:59] [INFO] Connection closed, fd=9
+[2026-04-22 23:13:12] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:13:12] [INFO] Accepted connection from 192.168.160.128:40734
+[2026-04-22 23:13:12] [INFO] New connection accepted, fd=9
+[2026-04-22 23:13:16] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 23:13:16] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:13:21] [INFO] File sent successfully: ./files/3c07ed0aacf96874f4331e9a4795d9cd65db16a4c2102157c67ea354757a99e1, size=70
+[2026-04-22 23:13:21] [INFO] Connection closed, fd=9
+[2026-04-22 23:15:18] [INFO] Received signal: 2
+[2026-04-22 23:15:18] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 23:15:18] [INFO] === Shutting down server ===
+[2026-04-22 23:15:18] [INFO] Stopping accepting new connections...
+[2026-04-22 23:15:18] [INFO] Waiting for worker threads to finish...
+[2026-04-22 23:15:18] [INFO] Destroying thread pool...
+[2026-04-22 23:15:18] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:15:18] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:15:18] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:15:18] [DEBUG] Thread 0 joined
+[2026-04-22 23:15:18] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:15:18] [DEBUG] Thread 1 joined
+[2026-04-22 23:15:18] [DEBUG] Thread 2 joined
+[2026-04-22 23:15:18] [DEBUG] Thread 3 joined
+[2026-04-22 23:15:18] [INFO] All worker threads stopped
+[2026-04-22 23:15:18] [INFO] Thread pool destroyed
+[2026-04-22 23:15:18] [INFO] Closing database connection...
+[2026-04-22 23:15:18] [INFO] MySQL connection closed
+[2026-04-22 23:15:20] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:15:20] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:15:20] [INFO] Server listening on 192.168.160.128:12345
+[2026-04-22 23:15:20] [INFO] Server started successfully
+[2026-04-22 23:15:20] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 23:15:22] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:15:22] [INFO] Accepted connection from 192.168.160.128:38530
+[2026-04-22 23:15:22] [INFO] New connection accepted, fd=9
+[2026-04-22 23:15:26] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 23:15:26] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:15:44] [INFO] File sent successfully: ./files/3c07ed0aacf96874f4331e9a4795d9cd65db16a4c2102157c67ea354757a99e1, size=70
+[2026-04-22 23:15:44] [INFO] Connection closed, fd=9
+[2026-04-22 23:16:22] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:16:22] [INFO] Accepted connection from 192.168.160.128:41338
+[2026-04-22 23:16:22] [INFO] New connection accepted, fd=9
+[2026-04-22 23:16:29] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 23:16:29] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:20:37] [INFO] Client disconnected
+[2026-04-22 23:20:37] [INFO] Connection closed, fd=9
+[2026-04-22 23:20:38] [INFO] Received signal: 2
+[2026-04-22 23:20:38] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 23:20:38] [INFO] === Shutting down server ===
+[2026-04-22 23:20:38] [INFO] Stopping accepting new connections...
+[2026-04-22 23:20:38] [INFO] Waiting for worker threads to finish...
+[2026-04-22 23:20:38] [INFO] Destroying thread pool...
+[2026-04-22 23:20:38] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:20:38] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:20:38] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:20:38] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:20:38] [DEBUG] Thread 0 joined
+[2026-04-22 23:20:38] [DEBUG] Thread 1 joined
+[2026-04-22 23:20:38] [DEBUG] Thread 2 joined
+[2026-04-22 23:20:38] [DEBUG] Thread 3 joined
+[2026-04-22 23:20:38] [INFO] All worker threads stopped
+[2026-04-22 23:20:38] [INFO] Thread pool destroyed
+[2026-04-22 23:20:38] [INFO] Closing database connection...
+[2026-04-22 23:20:38] [INFO] MySQL connection closed
+[2026-04-22 23:24:25] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:24:25] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:24:25] [INFO] Server listening on 192.168.160.128:12345
+[2026-04-22 23:24:25] [INFO] Server started successfully
+[2026-04-22 23:24:25] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 23:24:28] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:24:28] [INFO] Accepted connection from 192.168.160.128:46090
+[2026-04-22 23:24:28] [INFO] New connection accepted, fd=9
+[2026-04-22 23:24:34] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 23:24:34] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:24:38] [INFO] Client disconnected
+[2026-04-22 23:24:38] [INFO] Connection closed, fd=9
+[2026-04-22 23:24:39] [INFO] Received signal: 2
+[2026-04-22 23:24:39] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 23:24:39] [INFO] === Shutting down server ===
+[2026-04-22 23:24:39] [INFO] Stopping accepting new connections...
+[2026-04-22 23:24:39] [INFO] Waiting for worker threads to finish...
+[2026-04-22 23:24:39] [INFO] Destroying thread pool...
+[2026-04-22 23:24:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:24:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:24:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:24:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:24:39] [DEBUG] Thread 0 joined
+[2026-04-22 23:24:39] [DEBUG] Thread 1 joined
+[2026-04-22 23:24:39] [DEBUG] Thread 2 joined
+[2026-04-22 23:24:39] [DEBUG] Thread 3 joined
+[2026-04-22 23:24:39] [INFO] All worker threads stopped
+[2026-04-22 23:24:39] [INFO] Thread pool destroyed
+[2026-04-22 23:24:39] [INFO] Closing database connection...
+[2026-04-22 23:24:39] [INFO] MySQL connection closed
+[2026-04-22 23:42:38] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:42:38] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:42:38] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-22 23:42:38] [INFO] Data socket listening on 192.168.160.128:0
+[2026-04-22 23:42:38] [INFO] Server started successfully
+[2026-04-22 23:42:38] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 23:42:41] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:42:41] [INFO] Accepted control connection from 192.168.160.128:47612
+[2026-04-22 23:42:41] [INFO] Control connection accepted, fd=10
+[2026-04-22 23:42:48] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 23:42:48] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:45:27] [INFO] Received signal: 15
+[2026-04-22 23:45:27] [DEBUG] epoll_wait interrupted by signal
+[2026-04-22 23:45:27] [INFO] === Shutting down server ===
+[2026-04-22 23:45:27] [INFO] Stopping accepting new connections...
+[2026-04-22 23:45:27] [INFO] Waiting for worker threads to finish...
+[2026-04-22 23:45:27] [INFO] Destroying thread pool...
+[2026-04-22 23:45:27] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:45:27] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:45:27] [DEBUG] Worker thread exiting gracefully
+[2026-04-22 23:45:37] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:45:37] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:45:37] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-22 23:45:37] [INFO] Data socket listening on 192.168.160.128:0
+[2026-04-22 23:45:37] [INFO] Server started successfully
+[2026-04-22 23:45:37] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 23:47:02] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:47:02] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:47:02] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-22 23:47:02] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-22 23:47:02] [INFO] Server started successfully
+[2026-04-22 23:47:02] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-22 23:47:23] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:47:23] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:47:37] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:47:37] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:47:50] [INFO] === NetDisk Server Starting ===
+[2026-04-22 23:47:50] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-22 23:47:55] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:47:55] [INFO] Accepted control connection from 192.168.160.128:34958
+[2026-04-22 23:47:55] [INFO] Control connection accepted, fd=10
+[2026-04-22 23:48:11] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-22 23:48:11] [INFO] User logged in successfully: glh, id=6
+[2026-04-22 23:48:32] [DEBUG] epoll_wait returned 1 events
+[2026-04-22 23:48:32] [INFO] Accepted data connection from 192.168.160.128:41586
+[2026-04-22 23:48:32] [INFO] Data connection accepted, fd=11
+[2026-04-22 23:48:32] [INFO] Received handshake: user_id=6, cmd_type=8, path=./test_glh.txt
+[2026-04-22 23:48:32] [ERROR] Failed to truncate file
+[2026-04-22 23:48:32] [ERROR] Failed to receive file
+[2026-04-22 23:48:32] [INFO] Data connection closed, fd=11
+[2026-04-22 23:49:23] [ERROR] Failed to receive file size
+[2026-04-22 23:49:23] [ERROR] Failed to receive file
+[2026-04-22 23:49:23] [INFO] Client disconnected
+[2026-04-22 23:49:23] [INFO] Control connection closed, fd=10
+[2026-04-23 09:23:07] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:23:07] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:23:07] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 09:23:07] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 09:23:07] [INFO] Server started successfully
+[2026-04-23 09:23:07] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 09:25:33] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:25:33] [INFO] Accepted control connection from 192.168.160.128:37840
+[2026-04-23 09:25:33] [INFO] Control connection accepted, fd=10
+[2026-04-23 09:25:38] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 09:25:38] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 09:30:01] [INFO] File deleted: id=11
+[2026-04-23 09:30:43] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:30:43] [INFO] Accepted data connection from 192.168.160.128:38114
+[2026-04-23 09:30:43] [INFO] Data connection accepted, fd=11
+[2026-04-23 09:30:43] [INFO] Received handshake: user_id=6, cmd_type=8, path=./bible.txt
+[2026-04-23 09:30:43] [ERROR] Failed to truncate file
+[2026-04-23 09:30:43] [ERROR] Failed to receive file
+[2026-04-23 09:30:43] [INFO] Data connection closed, fd=11
+[2026-04-23 09:31:25] [ERROR] Failed to receive file size
+[2026-04-23 09:31:25] [ERROR] Failed to receive file
+[2026-04-23 09:31:25] [INFO] Client disconnected
+[2026-04-23 09:31:25] [INFO] Control connection closed, fd=10
+[2026-04-23 09:31:26] [INFO] Received signal: 2
+[2026-04-23 09:31:26] [DEBUG] epoll_wait interrupted by signal
+[2026-04-23 09:31:26] [INFO] === Shutting down server ===
+[2026-04-23 09:31:26] [INFO] Stopping accepting new connections...
+[2026-04-23 09:31:26] [INFO] Waiting for worker threads to finish...
+[2026-04-23 09:31:26] [INFO] Destroying thread pool...
+[2026-04-23 09:31:26] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 09:31:26] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 09:31:26] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 09:31:26] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 09:31:26] [DEBUG] Thread 0 joined
+[2026-04-23 09:31:26] [DEBUG] Thread 1 joined
+[2026-04-23 09:31:26] [DEBUG] Thread 2 joined
+[2026-04-23 09:31:26] [DEBUG] Thread 3 joined
+[2026-04-23 09:31:26] [INFO] All worker threads stopped
+[2026-04-23 09:31:26] [INFO] Thread pool destroyed
+[2026-04-23 09:31:26] [INFO] Closing database connection...
+[2026-04-23 09:31:26] [INFO] MySQL connection closed
+[2026-04-23 09:33:49] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:33:49] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:33:49] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 09:33:49] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 09:33:49] [INFO] Server started successfully
+[2026-04-23 09:33:49] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 09:34:55] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:34:55] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:35:02] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:35:02] [INFO] Accepted control connection from 192.168.160.128:36944
+[2026-04-23 09:35:02] [INFO] Control connection accepted, fd=10
+[2026-04-23 09:35:13] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 09:35:13] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 09:35:24] [INFO] PUT command received, client will connect to data port for file transfer: /bible.txt
+[2026-04-23 09:35:24] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:35:24] [INFO] Accepted data connection from 192.168.160.128:39684
+[2026-04-23 09:35:24] [INFO] Data connection accepted, fd=11
+[2026-04-23 09:35:24] [INFO] Received handshake: user_id=6, cmd_type=8, path=bible.txt
+[2026-04-23 09:35:24] [ERROR] Failed to truncate file
+[2026-04-23 09:35:24] [ERROR] Failed to receive file
+[2026-04-23 09:35:24] [INFO] Data connection closed, fd=11
+[2026-04-23 09:38:30] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:38:30] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:38:30] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 09:38:30] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 09:38:30] [INFO] Server started successfully
+[2026-04-23 09:38:30] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 09:40:06] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:40:06] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:40:09] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:40:09] [INFO] Accepted control connection from 192.168.160.128:40448
+[2026-04-23 09:40:09] [INFO] Control connection accepted, fd=10
+[2026-04-23 09:40:17] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 09:40:17] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 09:40:54] [INFO] PUT command received, client will connect to data port for file transfer: /bible.txt
+[2026-04-23 09:40:54] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:40:54] [INFO] Accepted data connection from 192.168.160.128:45770
+[2026-04-23 09:40:54] [INFO] Data connection accepted, fd=11
+[2026-04-23 09:40:54] [INFO] Received handshake: user_id=6, cmd_type=8, path=bible.txt
+[2026-04-23 09:40:54] [INFO] File added: /bible.txt
+[2026-04-23 09:40:54] [INFO] File uploaded via data port: /bible.txt, hash=5e7e64ab164651ac1b386b6626476c8bb34027ac09f9fdf7d39350ac6e99f4c8
+[2026-04-23 09:40:54] [INFO] Data connection closed, fd=11
+[2026-04-23 09:45:02] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:45:02] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:45:02] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 09:45:02] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 09:45:02] [INFO] Server started successfully
+[2026-04-23 09:45:02] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 09:46:26] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:46:26] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:46:30] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:46:30] [INFO] Accepted control connection from 192.168.160.128:47150
+[2026-04-23 09:46:30] [INFO] Control connection accepted, fd=10
+[2026-04-23 09:46:34] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 09:46:34] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 09:46:41] [INFO] GET command received, client will connect to data port for download: /bible.txt, size=4349664
+[2026-04-23 09:46:41] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 09:46:41] [INFO] Accepted data connection from 192.168.160.128:43496
+[2026-04-23 09:46:41] [INFO] Data connection accepted, fd=11
+[2026-04-23 09:46:41] [INFO] Received handshake: user_id=6, cmd_type=9, path=/bible.txt
+[2026-04-23 09:46:41] [INFO] File sent successfully: ./files/5e7e64ab164651ac1b386b6626476c8bb34027ac09f9fdf7d39350ac6e99f4c8, size=4349664
+[2026-04-23 09:46:41] [INFO] Data connection closed, fd=11
+[2026-04-23 09:47:17] [INFO] Client disconnected
+[2026-04-23 09:47:17] [INFO] Control connection closed, fd=10
+[2026-04-23 09:47:32] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:47:32] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:57:20] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:57:20] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 09:59:10] [INFO] === NetDisk Server Starting ===
+[2026-04-23 09:59:10] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 10:03:04] [INFO] Received signal: 15
+[2026-04-23 10:03:04] [DEBUG] epoll_wait interrupted by signal
+[2026-04-23 10:03:04] [INFO] === Shutting down server ===
+[2026-04-23 10:03:04] [INFO] Stopping accepting new connections...
+[2026-04-23 10:03:04] [INFO] Waiting for worker threads to finish...
+[2026-04-23 10:03:04] [INFO] Destroying thread pool...
+[2026-04-23 10:03:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:04] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:04] [DEBUG] Thread 0 joined
+[2026-04-23 10:03:04] [DEBUG] Thread 1 joined
+[2026-04-23 10:03:04] [DEBUG] Thread 2 joined
+[2026-04-23 10:03:04] [DEBUG] Thread 3 joined
+[2026-04-23 10:03:04] [INFO] All worker threads stopped
+[2026-04-23 10:03:04] [INFO] Thread pool destroyed
+[2026-04-23 10:03:04] [INFO] Closing database connection...
+[2026-04-23 10:03:04] [INFO] MySQL connection closed
+[2026-04-23 10:03:36] [INFO] === NetDisk Server Starting ===
+[2026-04-23 10:03:36] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 10:03:36] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 10:03:36] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 10:03:36] [INFO] Server started successfully
+[2026-04-23 10:03:36] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 10:03:39] [INFO] Received signal: 2
+[2026-04-23 10:03:39] [DEBUG] epoll_wait interrupted by signal
+[2026-04-23 10:03:39] [INFO] === Shutting down server ===
+[2026-04-23 10:03:39] [INFO] Stopping accepting new connections...
+[2026-04-23 10:03:39] [INFO] Waiting for worker threads to finish...
+[2026-04-23 10:03:39] [INFO] Destroying thread pool...
+[2026-04-23 10:03:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:39] [DEBUG] Thread 0 joined
+[2026-04-23 10:03:39] [DEBUG] Thread 1 joined
+[2026-04-23 10:03:39] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:39] [DEBUG] Thread 2 joined
+[2026-04-23 10:03:39] [DEBUG] Thread 3 joined
+[2026-04-23 10:03:39] [INFO] All worker threads stopped
+[2026-04-23 10:03:39] [INFO] Thread pool destroyed
+[2026-04-23 10:03:39] [INFO] Closing database connection...
+[2026-04-23 10:03:39] [INFO] MySQL connection closed
+[2026-04-23 10:03:41] [INFO] === NetDisk Server Starting ===
+[2026-04-23 10:03:41] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 10:03:41] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 10:03:41] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 10:03:41] [INFO] Server started successfully
+[2026-04-23 10:03:41] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 10:03:42] [INFO] Received signal: 2
+[2026-04-23 10:03:42] [DEBUG] epoll_wait interrupted by signal
+[2026-04-23 10:03:42] [INFO] === Shutting down server ===
+[2026-04-23 10:03:42] [INFO] Stopping accepting new connections...
+[2026-04-23 10:03:42] [INFO] Waiting for worker threads to finish...
+[2026-04-23 10:03:42] [INFO] Destroying thread pool...
+[2026-04-23 10:03:42] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:42] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:42] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:42] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:03:42] [DEBUG] Thread 0 joined
+[2026-04-23 10:03:42] [DEBUG] Thread 1 joined
+[2026-04-23 10:03:42] [DEBUG] Thread 2 joined
+[2026-04-23 10:03:42] [DEBUG] Thread 3 joined
+[2026-04-23 10:03:42] [INFO] All worker threads stopped
+[2026-04-23 10:03:42] [INFO] Thread pool destroyed
+[2026-04-23 10:03:42] [INFO] Closing database connection...
+[2026-04-23 10:03:42] [INFO] MySQL connection closed
+[2026-04-23 10:08:39] [INFO] === NetDisk Server Starting ===
+[2026-04-23 10:08:39] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 10:08:39] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 10:08:39] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 10:08:39] [INFO] Server started successfully
+[2026-04-23 10:08:39] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 10:08:45] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:08:45] [INFO] Accepted control connection from 192.168.160.128:34960
+[2026-04-23 10:08:45] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:09:52] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 10:09:52] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 10:11:07] [INFO] File added: /glh_1/glh_2/bible.txt
+[2026-04-23 10:11:07] [INFO] Instant upload: /glh_1/glh_2/bible.txt
+[2026-04-23 10:11:37] [INFO] GET command received, client will connect to data port for download: /glh_1/glh_2/bible.txt, size=4349664
+[2026-04-23 10:11:37] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:11:37] [INFO] Accepted data connection from 192.168.160.128:39594
+[2026-04-23 10:11:37] [INFO] Data connection accepted, fd=11
+[2026-04-23 10:11:37] [INFO] Received handshake: user_id=6, cmd_type=9, path=/glh_1/glh_2/bible.txt
+[2026-04-23 10:11:37] [INFO] File sent successfully: ./files/5e7e64ab164651ac1b386b6626476c8bb34027ac09f9fdf7d39350ac6e99f4c8, size=4349664
+[2026-04-23 10:11:37] [INFO] Data connection closed, fd=11
+[2026-04-23 10:11:52] [INFO] Client disconnected
+[2026-04-23 10:11:52] [INFO] Control connection closed, fd=10
+[2026-04-23 10:11:52] [INFO] Received signal: 2
+[2026-04-23 10:11:52] [DEBUG] epoll_wait interrupted by signal
+[2026-04-23 10:11:52] [INFO] === Shutting down server ===
+[2026-04-23 10:11:52] [INFO] Stopping accepting new connections...
+[2026-04-23 10:11:52] [INFO] Waiting for worker threads to finish...
+[2026-04-23 10:11:52] [INFO] Destroying thread pool...
+[2026-04-23 10:11:52] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:11:52] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:11:52] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:11:52] [DEBUG] Worker thread exiting gracefully
+[2026-04-23 10:11:52] [DEBUG] Thread 0 joined
+[2026-04-23 10:11:52] [DEBUG] Thread 1 joined
+[2026-04-23 10:11:52] [DEBUG] Thread 2 joined
+[2026-04-23 10:11:52] [DEBUG] Thread 3 joined
+[2026-04-23 10:11:52] [INFO] All worker threads stopped
+[2026-04-23 10:11:52] [INFO] Thread pool destroyed
+[2026-04-23 10:11:52] [INFO] Closing database connection...
+[2026-04-23 10:11:52] [INFO] MySQL connection closed
+[2026-04-23 10:21:14] [INFO] === NetDisk Server Starting ===
+[2026-04-23 10:21:14] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 10:21:14] [INFO] Control socket listening on 192.168.160.128:12345
+[2026-04-23 10:21:14] [INFO] Data socket listening on 192.168.160.128:12346
+[2026-04-23 10:21:14] [INFO] Server started successfully
+[2026-04-23 10:21:14] [INFO] Press Ctrl+C to stop the server gracefully
+[2026-04-23 10:22:11] [INFO] === NetDisk Server Starting ===
+[2026-04-23 10:22:11] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 10:22:15] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:22:15] [INFO] Accepted control connection from 192.168.160.128:36042
+[2026-04-23 10:22:15] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:22:39] [DEBUG] Executing SQL: INSERT INTO `user` (`username`, `salt`, `password_hash`) VALUES ('cjs', 'l7EFdRufMKFmGFA7EhBDpBhyHPb23S91', '3a3335635e1299fb7e6b7f867b9e8afeefd4a611946468f8c7cbe6389f6374c4')
+[2026-04-23 10:22:39] [INFO] User registered successfully: cjs, id=8
+[2026-04-23 10:22:39] [INFO] Root directory created for user 8
+[2026-04-23 10:22:39] [DEBUG] Generated token for user_id=8
+[2026-04-23 10:22:39] [INFO] Registration success, token generated for user_id=8
+[2026-04-23 10:22:43] [DEBUG] Token verified successfully for user_id=8
+[2026-04-23 10:22:43] [DEBUG] Token verified successfully, user_id=8
+[2026-04-23 10:22:51] [DEBUG] Token verified successfully for user_id=8
+[2026-04-23 10:22:51] [DEBUG] Token verified successfully, user_id=8
+[2026-04-23 10:22:51] [INFO] Directory created: /cjs1
+[2026-04-23 10:22:57] [DEBUG] Token verified successfully for user_id=8
+[2026-04-23 10:22:57] [DEBUG] Token verified successfully, user_id=8
+[2026-04-23 10:23:08] [DEBUG] Token verified successfully for user_id=8
+[2026-04-23 10:23:08] [DEBUG] Token verified successfully, user_id=8
+[2026-04-23 10:23:08] [INFO] File added: /cjs1/bible.txt
+[2026-04-23 10:23:08] [INFO] Instant upload: /cjs1/bible.txt
+[2026-04-23 10:23:32] [DEBUG] Token verified successfully for user_id=8
+[2026-04-23 10:23:32] [DEBUG] Token verified successfully, user_id=8
+[2026-04-23 10:23:32] [INFO] GET command received, client will connect to data port for download: /cjs1/bible.txt, size=4349664
+[2026-04-23 10:23:32] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:23:32] [INFO] Accepted data connection from 192.168.160.128:59582
+[2026-04-23 10:23:32] [INFO] Data connection accepted, fd=11
+[2026-04-23 10:23:32] [INFO] Received handshake: user_id=8, cmd_type=9, path=/cjs1/bible.txt
+[2026-04-23 10:23:32] [INFO] File sent successfully: ./files/5e7e64ab164651ac1b386b6626476c8bb34027ac09f9fdf7d39350ac6e99f4c8, size=4349664
+[2026-04-23 10:23:32] [INFO] Data connection closed, fd=11
+[2026-04-23 10:24:07] [INFO] Client disconnected
+[2026-04-23 10:24:07] [INFO] Control connection closed, fd=10
+[2026-04-23 10:24:38] [INFO] === NetDisk Server Starting ===
+[2026-04-23 10:24:38] [INFO] MySQL connected successfully to localhost:3306/netdisk
+[2026-04-23 10:24:42] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:24:42] [INFO] Accepted control connection from 192.168.160.128:38438
+[2026-04-23 10:24:42] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:25:04] [DEBUG] Executing SQL: INSERT INTO `user` (`username`, `salt`, `password_hash`) VALUES ('zzc', 'd5GaIL0sny7S4UcaFq5HZKGCuc6ZVhKq', 'f4f8beacdc61cd3628c6b84c886f28f22931ce58a2fa269c1aeb562bada30316')
+[2026-04-23 10:25:04] [INFO] User registered successfully: zzc, id=9
+[2026-04-23 10:25:04] [INFO] Root directory created for user 9
+[2026-04-23 10:25:04] [DEBUG] Generated token for user_id=9
+[2026-04-23 10:25:04] [INFO] Registration success, token generated for user_id=9
+[2026-04-23 10:25:55] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='zzc'
+[2026-04-23 10:25:55] [INFO] User logged in successfully: zzc, id=9
+[2026-04-23 10:25:55] [DEBUG] Generated token for user_id=9
+[2026-04-23 10:25:55] [INFO] Login success, token generated for user_id=9
+[2026-04-23 10:26:00] [INFO] Client disconnected
+[2026-04-23 10:26:00] [INFO] Control connection closed, fd=10
+[2026-04-23 10:26:02] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:26:02] [INFO] Accepted control connection from 192.168.160.128:44360
+[2026-04-23 10:26:02] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:26:11] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='cjs'
+[2026-04-23 10:26:11] [INFO] User logged in successfully: cjs, id=8
+[2026-04-23 10:26:11] [DEBUG] Generated token for user_id=8
+[2026-04-23 10:26:11] [INFO] Login success, token generated for user_id=8
+[2026-04-23 10:26:21] [INFO] Client disconnected
+[2026-04-23 10:26:21] [INFO] Control connection closed, fd=10
+[2026-04-23 10:26:26] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:26:26] [INFO] Accepted control connection from 192.168.160.128:37218
+[2026-04-23 10:26:26] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:26:35] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='cjs'
+[2026-04-23 10:26:35] [INFO] User logged in successfully: cjs, id=8
+[2026-04-23 10:26:35] [DEBUG] Generated token for user_id=8
+[2026-04-23 10:26:35] [INFO] Login success, token generated for user_id=8
+[2026-04-23 10:26:41] [INFO] Client disconnected
+[2026-04-23 10:26:41] [INFO] Control connection closed, fd=10
+[2026-04-23 10:26:42] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:26:42] [INFO] Accepted control connection from 192.168.160.128:57112
+[2026-04-23 10:26:42] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:26:46] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 10:26:46] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 10:26:46] [DEBUG] Generated token for user_id=6
+[2026-04-23 10:26:46] [INFO] Login success, token generated for user_id=6
+[2026-04-23 10:26:56] [INFO] Client disconnected
+[2026-04-23 10:26:56] [INFO] Control connection closed, fd=10
+[2026-04-23 10:27:14] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:27:14] [INFO] Accepted control connection from 192.168.160.128:53928
+[2026-04-23 10:27:14] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:27:21] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 10:27:21] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 10:27:21] [DEBUG] Generated token for user_id=6
+[2026-04-23 10:27:21] [INFO] Login success, token generated for user_id=6
+[2026-04-23 10:28:04] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:28:04] [INFO] Accepted control connection from 192.168.160.128:57152
+[2026-04-23 10:28:04] [INFO] Control connection accepted, fd=11
+[2026-04-23 10:28:11] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='zzc'
+[2026-04-23 10:28:11] [INFO] User logged in successfully: zzc, id=9
+[2026-04-23 10:28:11] [DEBUG] Generated token for user_id=9
+[2026-04-23 10:28:11] [INFO] Login success, token generated for user_id=9
+[2026-04-23 10:28:20] [DEBUG] Token verified successfully for user_id=6
+[2026-04-23 10:28:20] [DEBUG] Token verified successfully, user_id=6
+[2026-04-23 10:28:46] [INFO] Client disconnected
+[2026-04-23 10:28:46] [INFO] Control connection closed, fd=11
+[2026-04-23 10:28:49] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:28:49] [INFO] Accepted control connection from 192.168.160.128:53172
+[2026-04-23 10:28:49] [INFO] Control connection accepted, fd=11
+[2026-04-23 10:29:01] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='cjs'
+[2026-04-23 10:29:01] [INFO] User logged in successfully: cjs, id=8
+[2026-04-23 10:29:01] [DEBUG] Generated token for user_id=8
+[2026-04-23 10:29:01] [INFO] Login success, token generated for user_id=8
+[2026-04-23 10:29:08] [INFO] Client disconnected
+[2026-04-23 10:29:08] [INFO] Control connection closed, fd=10
+[2026-04-23 10:29:10] [DEBUG] epoll_wait returned 1 events
+[2026-04-23 10:29:10] [INFO] Accepted control connection from 192.168.160.128:35318
+[2026-04-23 10:29:10] [INFO] Control connection accepted, fd=10
+[2026-04-23 10:29:13] [DEBUG] Executing SQL: SELECT `id`, `salt`, `password_hash` FROM `user` WHERE `username`='glh'
+[2026-04-23 10:29:13] [INFO] User logged in successfully: glh, id=6
+[2026-04-23 10:29:13] [DEBUG] Generated token for user_id=6
+[2026-04-23 10:29:13] [INFO] Login success, token generated for user_id=6
+[2026-04-23 10:29:41] [INFO] Client disconnected
+[2026-04-23 10:29:41] [INFO] Control connection closed, fd=10
+[2026-04-23 10:29:42] [INFO] Client disconnected
+[2026-04-23 10:29:42] [INFO] Control connection closed, fd=11
